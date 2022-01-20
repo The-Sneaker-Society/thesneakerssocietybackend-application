@@ -1,1 +1,4 @@
-
+HOST: "mysqldatabase.cursd5wkphyn.us-east-2.rds.amazonaws.com",
+USER: "rabinadhikari",
+PASSWORD: "thesneakerssociety",
+DATABASE: "sneakers_society"
