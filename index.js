@@ -23,10 +23,23 @@ app.use(express.json());
 //     });
 // });
 app.get("/", (req, res) => {
-    const sqlSelect = "INSERT INTO Users_Table (ID, First_Name, Last_Name, Email, created_at, updated_at, confirmed, verified, Firebase_id ) VALUES ('103', 'Tom', 'Ruild', 'tomruild@gmail.com', 'Wednesday, December 22, 2021', 'Wednesday, December 22, 2021', 'TRUE', 'FALSE', '101')";
+    const sqlSelect = "select First_Name, Last_Name, Email from Users_Table";
     con.query(sqlSelect, (err, result) => {
-        res.send("Hello World");
+        res.send("hello world");
     });
+});
+app.get("/", (req, res) => {
+    const sqlSelect = "select author, text from Posts_Table";
+    con.query(sqlSelect, (err, result) => {
+        res.send("hello world");
+    });
+});
+app.get("/", (req, res) => {
+    const sqlSelect = "select First_Name, Last_Name, Email from Friends_List_Table";
+    con.query(sqlSelect, (err, result) => {
+        res.send("hello world");
+    });
+});
 });
 // app.post("/api/insert", (req, res) => {
 //     const id = req.body.id;
