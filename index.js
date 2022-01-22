@@ -22,25 +22,25 @@ app.use(express.json());
 //         res.send("hello World");
 //     });
 // });
-app.get("/", (req, res) => {
+app.get("", (req, res) => {
     const sqlSelect = "select First_Name, Last_Name, Email from Users_Table";
     con.query(sqlSelect, (err, result) => {
-        res.send("hello world");
+        res.send(result);
     });
 });
-app.get("/", (req, res) => {
+app.get("", (req, res) => {
     const sqlSelect = "select author, text from Posts_Table";
     con.query(sqlSelect, (err, result) => {
-        res.send("hello world");
+        res.send(result);
     });
 });
-app.get("/", (req, res) => {
+app.get("", (req, res) => {
     const sqlSelect = "select First_Name, Last_Name, Email from Friends_List_Table";
     con.query(sqlSelect, (err, result) => {
-        res.send("hello world");
+        res.send(result);
     });
 });
-});
+// });
 // app.post("/api/insert", (req, res) => {
 //     const id = req.body.id;
 //     const Name = req.body.Name;
