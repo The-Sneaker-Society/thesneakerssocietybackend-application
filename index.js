@@ -7,10 +7,10 @@ dotenv.config();
 // console.log(process.env);
 
 var con = mysql.createConnection ({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
 });
 app.use(cors());
 app.use(express.json());
@@ -22,6 +22,7 @@ app.use(express.json());
 //         res.send("hello World");
 //     });
 // });
+
 app.get("", (req, res) => {
     const sqlSelect = "select First_Name, Last_Name, Email from Users_Table";
     con.query(sqlSelect, (err, result) => {
