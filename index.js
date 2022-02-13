@@ -4,6 +4,8 @@ const mysql = require("mysql");
 const cors = require("cors");
 const dotenv = require('dotenv')
 dotenv.config();
+
+import * as User from './controller/Users'
 // console.log(process.env);
 
 var con = mysql.createConnection ({
@@ -22,6 +24,52 @@ app.get("/", (req, res) => {
         res.send("Hello World");
     });
 });
+
+createUser()
+
+app.get('/users', async (req,res,next) => {
+    try {
+        // Validate that the correct info is in the req.body
+        validateReqBody(req.body, ["email", "firstName", "lastName"])
+        
+        // Validate email
+        validateEmail(email);
+
+
+        // create data object
+        const dataToSend = {
+            email: req.body.email,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            firebaseId: req.body.firebaseId,
+            createdAt: new Date.now(),
+            updatedAt: new Date.now(),
+            confirmed: false,
+            verified: false 
+        }
+
+
+        // create Query
+       const sqlStatment = createUserQuery(dataToSend)
+
+       // Run Query
+       con.query(sqlStatment, (err, result)= {
+
+       })
+
+
+
+
+    } catch (e) {
+        throw e;
+    }
+})
+
+app.get("/users", getUser())
+app.post("/users", createUser())
+app.delete("/users", deleteUser())
+app.patch("/users", updateUser())
+
 // app.get("/", (req, res) => {
 //     const sqlSelect = "INSERT INTO Posts_Table (ID, author, text, liked_by, likes, created_at, updated_at) VALUES ('100', 'Rolan Tan', 'tanrolan@gmail.com', '20', '20', 'Monday, December 20, 2021 1:34 PM', 'Monday, December 20, 2021 1:34 PM')";
 //     con.query(sqlSelect, (err, result) => {
