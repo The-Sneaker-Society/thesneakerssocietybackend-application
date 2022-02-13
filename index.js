@@ -65,7 +65,7 @@ app.get('/users', async (req,res,next) => {
     }
 })
 
-app.get("/users", getUser())
+app.get("/users", User.createUser())
 app.post("/users", createUser())
 app.delete("/users", deleteUser())
 app.patch("/users", updateUser())
